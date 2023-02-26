@@ -1,1 +1,18 @@
+body{
+    width: 600px;
+}
+
+.hero-img{
+    width:100%;
+    height: 167px;
+}
+
+.hero-area{
+    display: flex;
+    position: relative;
+}
+.title{
+    position: absolute;
+}
+
 
