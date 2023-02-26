@@ -1,18 +1,41 @@
 body{
     width: 600px;
+    margin:0;
+    text-align: center;
+    font-family: 'Smythe', cursive;
+    padding: 0;
+    
 }
 
-.hero-img{
-    width:100%;
-    height: 167px;
-}
 
 .hero-area{
-    display: flex;
-    position: relative;
-}
-.title{
-    position: absolute;
+position: relative;
+background-image: url(images/header.png);
+background-position: center; 
+background-repeat: no-repeat; 
+background-size: cover; 
+width: 100%;
+height: 200px;
 }
 
+
+.title{
+    position: absolute;
+    color: white;
+    top : 50px;
+    left: 50px;
+
+}
+
+.title h1 {
+    font-size: 39px; 
+    line-height: 24px;
+    text-align: left;
+}
+
+.title h3{
+    font-size: 23px;
+    line-height: 14px;
+
+}
 
