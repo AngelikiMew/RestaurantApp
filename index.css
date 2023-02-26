@@ -16,6 +16,7 @@ background-repeat: no-repeat;
 background-size: cover; 
 width: 100%;
 height: 200px;
+margin-bottom: 25px;
 }
 
 
@@ -39,3 +40,65 @@ height: 200px;
 
 }
 
+.emoji{
+    font-size:78px;
+    margin: 15px auto auto 50px ; 
+    
+}
+
+.menu-create{
+    display: flex;
+    width: 600px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.menu-item{
+    display:inline-block;
+    width: 100%;
+    font-size:28px;
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 25px; 
+}
+
+.ingredients{
+font-size: 16px;
+color: #8B8B8B;
+}
+
+.price{
+font-size: 20px;
+color: #000000;
+}
+
+
+p{
+    margin:0;
+    padding:0;
+}
+
+.plusBtn{
+ font-family: 'Inter', sans-serif;
+ color: #3C3C3C;
+ font-size: 32px;
+ border:1px solid #DEDEDE;
+ background-color: white;
+ border-radius: 50%;
+ margin-right: 50px;
+ margin-bottom: 25px;
+ text-align: center;
+}
+
+.plusBtn:hover{
+    background-color:#efefef;
+}
+
+hr{
+    margin-top: 40px;
+    margin-bottom: 0;
+    margin-left: -100px;
+    margin-right: -70px;
+}

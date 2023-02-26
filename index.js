@@ -39,9 +39,15 @@ function getContent(){
         console.log('here')
         createContent+=`
         <div class="menu-create">
-            <div class='emoji'>
-            <p>${menu.emoji}</p>
-            </div>
+            <p class='emoji'>${menu.emoji}</p>
+            <div class="menu-item">
+            <p>${menu.name}</p>
+            <p class='ingredients'>${menu.ingredients}</p>
+            <p class='price'>$${menu.price}</p>
+            <hr>
+</div>
+
+<button class='plusBtn'>+</button>
         </div>
         `
         
