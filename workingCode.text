@@ -1,0 +1,391 @@
+// working code
+
+
+JS 
+//import {menuArray} from './data.js'
+
+const menuArray = [
+    {
+        name: "Pizza",
+        ingredients: ["pepperoni", "mushroom", "mozarella"],
+        id: 0,
+        price: 14,
+        emoji: "🍕"
+    },
+    {
+        name: "Hamburger",
+        ingredients: ["beef", "cheese", "lettuce"],
+        price: 12,
+        emoji: "🍔",
+        id: 1
+    },
+        {
+        name: "Beer",
+        ingredients: ["grain, hops, yeast, water"],
+        price: 12,
+        emoji: "🍺",
+        id: 2
+    }
+    
+]
+
+
+const order =[]
+let flagOrder=false
+let flagPrice=false
+let createOrder= ""
+let sum=0
+let totalCost=0
+//const removeBtn = document.getElementById("remove")
+
+
+document.addEventListener ('click', function(e){
+        addOrder(e.target.dataset.item)
+})
+
+
+//if (flagOrder == true){
+    //removeBtn.addEventListener('click', function(e){
+        
+       // console.log('new' + e.target.dataset.item)
+        
+   // })
+//}
+
+function addOrder(menuItem){
+let price=0;
+ let idx = order.find(temp => temp.name == menuItem)
+ 
+ for ( let item of menuArray){
+        if(item.name == menuItem){
+         order.push(item)
+         price= item.price;
+         console.log(order)
+        }
+ }
+
+ if (idx){
+     let result = order.filter((orders => orders.name == menuItem));
+     console.log(result.length)
+     totalCost= result.length*price
+     document.getElementById("price-"+menuItem).innerHTML= '$ ' + totalCost;
+     console.log(menuItem)
+     console.log('exists')
+     getTotal(price)
+ }else{
+       for ( let item of menuArray){
+        if(item.name == menuItem){
+            getTotal(item.price)
+         renderOrder(item)
+         
+         }
+  }
+ }
+
+function getTotal(cost){
+    
+    sum+=cost;
+  
+    let totalLine = `
+    
+    <hr class="total-hr">
+    <div class='total-line'>
+    <p class="total-price"> Total price: </p> 
+    <p class="sum"> $${sum} </p>
+    </div>
+    `
+    document.getElementById("total").innerHTML = totalLine
+}
+
+    
+
+  
+}
+   
+function renderOrder(obj){
+
+        if (flagOrder == false){
+         document.getElementById("order-head").style.display='block';
+         document.getElementById("complete").style.display='block';
+         flagOrder = true
+     }
+     createOrder+= `
+     <div class='newOrder' id='newOrder-${obj.name}'> 
+     <p class="order-name" id='order-name-${obj.name}'> ${obj.name}
+     <a class="remove" id="remove" onClick='remove("${obj.name}")'>remove</a>
+     </p>
+     <p class="order-price" id="price-${obj.name}"> $${obj.price}</p>
+     </div>
+     <div class='complete-order'>
+     `
+    document.getElementById('order').innerHTML = createOrder
+    
+ 
+    }
+
+
+function remove(name){
+    
+        for( var i = 0; i < order.length; i++){ 
+            
+            if ( order[i].name == name ) { 
+                 totalCost-=order[i].price
+                 order.splice(i, 1) 
+                 if (totalCost>0){
+                     document.getElementById("price-"+name).innerHTML= '$ ' + totalCost
+                    }else{
+                        let div=document.getElementById("newOrder-"+name);
+                             while (div.hasChildNodes())
+                                {
+                                     div.removeChild(div.lastChild)
+                                }
+                    }
+            }
+            console.log(order)
+            break;
+            
+            
+            
+        }
+}
+
+
+
+
+function getContent(){
+
+    let createContent=""
+
+    menuArray.forEach(function(menu){
+       
+        createContent+=`
+        <div class="menu-create">
+            <p class='emoji' >${menu.emoji}</p>
+            <div class="menu-item">
+            <p class="menu-name">${menu.name}</p>
+            <p class='ingredients'>${menu.ingredients}</p>
+            <p class='price'>$${menu.price}</p>
+            <hr>
+</div>
+<button id='plusBtn' data-item=${menu.name}>+</button>
+        </div>
+        `
+        
+    })
+    return createContent;
+}
+
+
+
+
+function render(){
+    document.getElementById('content').innerHTML = getContent();
+}
+render();
+
+
+
+
+
+html 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Smythe&display=swap" rel="stylesheet">    <link href="index.css" rel="stylesheet">
+    <title>Delivery App</title>
+</head>
+<body>
+    <header class="hero-area">
+        <div class="title">
+        <h1>Jimmy's Diner</h1>
+        <h3>The best burgers and pizzas in town</h3>
+        </div>
+    </header>
+    <main>
+        <div class="main-content" id="content">
+			<!-- Food here! -->
+		</div>
+        
+        <h2 class='hidden' id="order-head"> Your order</h2>
+        
+        <div class= "order-details" id="order">
+            <!-- Order here! -->
+            
+            </div>
+    
+        <div class="total" id="total">
+      
+            </div>
+        
+        <button class="hidden" id='complete'>Complete</button>
+        
+       
+    </main>
+    <script src="index.js"></script>
+
+
+
+    
+</body>
+</html>
+
+
+css
+body{
+    width: 600px;
+    margin:0;
+    text-align: center;
+    font-family: 'Smythe', cursive;
+    padding: 0;
+    
+}
+
+
+.hero-area{
+position: relative;
+background-image: url(images/header.png);
+background-position: center; 
+background-repeat: no-repeat; 
+background-size: cover; 
+width: 100%;
+height: 200px;
+margin-bottom: 25px;
+}
+
+
+.title{
+    position: absolute;
+    color: white;
+    top : 50px;
+    left: 50px;
+
+}
+
+.title h1 {
+    font-size: 39px; 
+    line-height: 24px;
+    text-align: left;
+}
+
+.title h3{
+    font-size: 23px;
+    line-height: 14px;
+
+}
+
+.emoji{
+    font-size:78px;
+    margin: 15px auto auto 50px ; 
+    
+}
+
+.menu-create{
+    display: flex;
+    width: 600px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.menu-item{
+    display:inline-block;
+    width: 100%;
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 25px; 
+}
+
+.ingredients{
+font-size: 16px;
+color: #8B8B8B;
+}
+
+.price{
+font-size: 20px;
+color: #000000;
+}
+
+
+p{
+    margin:0;
+    padding:0;
+}
+
+#plusBtn{
+ font-family: 'Inter', sans-serif;
+ color: #3C3C3C;
+ font-size: 32px;
+ border:1px solid #DEDEDE;
+ background-color: white;
+ border-radius: 50%;
+ margin-right: 50px;
+ margin-bottom: 25px;
+ text-align: center;
+ padding-bottom: 5px;
+}
+
+#plusBtn:hover{
+    background-color:#efefef;
+}
+
+.menu-create hr{
+    margin-top: 40px;
+    margin-bottom: 0;
+    margin-left: -100px;
+    margin-right: -70px;
+}
+
+.newOrder{
+    margin: 15px 45px auto 70px ; 
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.hidden{
+    display:none;
+    text-align: center;
+}
+
+.order-name, #order-head, .total-price, .menu-name{
+    font-size: 28px;
+    font-weight: bold;
+    
+} 
+
+.total-line{
+    margin: 15px 45px auto 70px ; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove{
+    color: #BBBBBB;
+    font-size: 12px;
+    font-family: 'Verdana';
+    margin-left: 5px;
+}
+
+.order-price, .sum {
+    padding-top: 7px;
+    font-size: 20px;
+    
+}
+
+.total-hr{
+    margin: 25px 28px auto 73px ;
+    color: #393333;
+}
+
+
+
+
+
+
+
