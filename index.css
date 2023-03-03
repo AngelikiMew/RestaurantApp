@@ -9,14 +9,14 @@ body{
 
 
 .hero-area{
-position: relative;
-background-image: url(images/header.png);
-background-position: center; 
-background-repeat: no-repeat; 
-background-size: cover; 
-width: 100%;
-height: 200px;
-margin-bottom: 25px;
+    position: relative;
+    background-image: url(images/header.png);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    width: 100%;
+    height: 200px;
+    margin-bottom: 25px;
 }
 
 
@@ -58,20 +58,19 @@ margin-bottom: 25px;
 .menu-item{
     display:inline-block;
     width: 100%;
-    font-size:28px;
     text-align: left;
     margin-top: 25px;
     margin-bottom: 25px; 
 }
 
 .ingredients{
-font-size: 16px;
-color: #8B8B8B;
+    font-size: 16px;
+    color: #8B8B8B;
 }
 
 .price{
-font-size: 20px;
-color: #000000;
+    font-size: 20px;
+    color: #000000;
 }
 
 
@@ -80,25 +79,75 @@ p{
     padding:0;
 }
 
-.plusBtn{
- font-family: 'Inter', sans-serif;
- color: #3C3C3C;
- font-size: 32px;
- border:1px solid #DEDEDE;
- background-color: white;
- border-radius: 50%;
- margin-right: 50px;
- margin-bottom: 25px;
- text-align: center;
+#plusBtn{
+    font-family: 'Inter', sans-serif;
+    color: #3C3C3C;
+    font-size: 32px;
+    border:1px solid #DEDEDE;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
-.plusBtn:hover{
+#plusBtn:hover{
     background-color:#efefef;
 }
 
-hr{
+.menu-create hr{
     margin-top: 40px;
     margin-bottom: 0;
     margin-left: -100px;
     margin-right: -70px;
 }
+
+.newOrder{
+    margin: 15px 45px auto 70px ; 
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.hidden{
+    display:none;
+    text-align: center;
+}
+
+.order-name, #order-head, .total-price, .menu-name{
+    font-size: 28px;
+    font-weight: bold;
+    
+} 
+
+.total-line{
+    margin: 15px 45px auto 70px ; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove{
+    color: #BBBBBB;
+    font-size: 12px;
+    font-family: 'Verdana';
+    margin-left: 5px;
+}
+
+.order-price, .sum {
+    padding-top: 7px;
+    font-size: 20px;
+    
+}
+
+.total-hr{
+    margin: 25px 28px auto 73px ;
+    color: #393333;
+}
+
+
+
+
+
+
+
