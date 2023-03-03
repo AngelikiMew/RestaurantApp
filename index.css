@@ -94,6 +94,7 @@ p{
 
 #plusBtn:hover{
     background-color:#efefef;
+    cursor: pointer;
 }
 
 .menu-create hr{
@@ -132,6 +133,7 @@ p{
     font-size: 12px;
     font-family: 'Verdana';
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .order-price, .sum {
